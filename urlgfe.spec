@@ -11,6 +11,7 @@ Group:     Networking/File transfer
 License:     GPL
 Url:       http://urlget.sourceforge.net/
 Source:  %{name}-%{version}.tar.bz2 
+BuildRoot: %{_tmppath}/%{name}-%{version}-buildroot
 BuildRequires: libcurl-devel
 BuildRequires: libxml2-devel
 BuildRequires: libgtk+2-devel
