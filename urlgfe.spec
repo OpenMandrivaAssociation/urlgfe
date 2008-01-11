@@ -50,21 +50,10 @@ rm -rf $RPM_BUILD_ROOT
 
 %makeinstall_std
 
-mkdir -p %{buildroot}{%{_miconsdir},%{_iconsdir},%{_liconsdir},%{_menudir}}
 install -m 644 pixmaps/urlgfe-icon.png %{buildroot}%{_liconsdir}/%{iconname}
 convert pixmaps/%{name}-icon.png  -geometry 32x32 %{buildroot}%{_iconsdir}/%{iconname}
 convert pixmaps/%{name}-icon.png  -geometry 16x16 %{buildroot}%{_miconsdir}/%{iconname} 
 
-cat > %{buildroot}%{_menudir}/%{name} << EOF
-?package(%{name}):\
-	command="%{name}" \
-	icon="%{iconname}" \
-	title="Urlgfe" \
-	longtitle="A download manager" \
-	needs="x11" \
-	section="Internet/File Transfer" \
-	xdg="true"
-EOF
  
 #rm dup docs
 rm -rfd $RPM_BUILD_ROOT/usr/doc
@@ -84,7 +73,6 @@ rm -rfd $RPM_BUILD_ROOT/usr/doc
 %defattr(-,root,root)
 %doc COPYING INSTALL
 %{_bindir}/*
-%{_menudir}/%{name}
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/pixmaps/%{name}-icon.png
 %{_iconsdir}/*
