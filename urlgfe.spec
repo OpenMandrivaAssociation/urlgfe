@@ -1,6 +1,6 @@
 %define name urlgfe 
 %define version 1.0
-%define release %mkrel 1
+%define release %mkrel 2
 %define iconname %{name}.png
 
 Summary:   Download manager that uses gtk+2
