@@ -3,7 +3,7 @@
 %define release %mkrel 1
 %define iconname %{name}.png
 
-Summary:   UrlGfe is a download manager that uses gtk+2
+Summary:   Download manager that uses gtk+2
 Name:      %{name}
 Version:   %{version}
 Release:   %{release}
