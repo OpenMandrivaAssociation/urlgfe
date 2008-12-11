@@ -17,7 +17,7 @@ BuildRequires: libxml2-devel
 BuildRequires: libgtk+2-devel
 BuildRequires: libgdk_pixbuf2.0-devel
 BuildRequires: openssl-devel 
-BuildRequires: ImageMagick
+BuildRequires: imagemagick
 BuildRequires: pcre-devel
 BuildRequires: desktop-file-utils
 Requires: wget
