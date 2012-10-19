@@ -1,3 +1,4 @@
+%define Werror_cflags %nil
 %define name urlgfe 
 %define version 1.0
 %define release %mkrel 7
@@ -10,11 +11,10 @@ Release:   %{release}
 Group:     Networking/File transfer
 License:     GPL
 Url:       http://urlget.sourceforge.net/
-Source:  %{name}-%{version}.tar.bz2 
-BuildRoot: %{_tmppath}/%{name}-%{version}-buildroot
-BuildRequires: libcurl-devel
+Source0:  %{name}-%{version}.tar.bz2 
+BuildRequires: curl-devel
 BuildRequires: libxml2-devel
-BuildRequires: libgtk+2-devel
+BuildRequires: pkgconfig(gtk+-3.0)
 BuildRequires: libgdk_pixbuf2.0-devel
 BuildRequires: openssl-devel 
 BuildRequires: imagemagick
@@ -36,7 +36,7 @@ Formerly urlget
 
 %prep
 %setup -q -n %{name}-%{version}
-rm -rfd $RPM_BUILD_ROOT/%{name}-%{version}/win32
+rm -rfd %{buildroot}/%{name}-%{version}/win32
  
 %build 
  
@@ -46,9 +46,11 @@ rm -rfd $RPM_BUILD_ROOT/%{name}-%{version}/win32
 
  
 %install
-rm -rf $RPM_BUILD_ROOT
 
 %makeinstall_std
+
+mkdir -p %{buildroot}%{_liconsdir}/
+mkdir -p %{buildroot}%{_miconsdir}/
 
 install -m 644 pixmaps/urlgfe-icon.png %{buildroot}%{_liconsdir}/%{iconname}
 convert pixmaps/%{name}-icon.png  -geometry 32x32 %{buildroot}%{_iconsdir}/%{iconname}
@@ -56,29 +58,13 @@ convert pixmaps/%{name}-icon.png  -geometry 16x16 %{buildroot}%{_miconsdir}/%{ic
 
  
 #rm dup docs
-rm -rfd $RPM_BUILD_ROOT/usr/doc
+rm -rfd %{buildroot}/usr/doc
 
 %find_lang %{name} 
 
-%clean
-#rm -rf $RPM_BUILD_ROOT
-
-%if %mdkversion < 200900
-%post
-%{update_menus}
-%endif
-
-%if %mdkversion < 200900
-%postun
-%{clean_menus}
-%endif
-
 %files -f %{name}.lang
-%defattr(-,root,root)
 %doc COPYING INSTALL
 %{_bindir}/*
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/pixmaps/%{name}-icon.png
 %{_iconsdir}/*
-
-
