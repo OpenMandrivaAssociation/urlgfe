@@ -1,7 +1,7 @@
 %define Werror_cflags %nil
 %define name urlgfe 
 %define version 1.0
-%define release %mkrel 7
+%define release 8
 %define iconname %{name}.png
 
 Summary:   Download manager that uses gtk+2
