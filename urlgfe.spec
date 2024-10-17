@@ -10,7 +10,7 @@ Version:   %{version}
 Release:   %{release}
 Group:     Networking/File transfer
 License:     GPL
-Url:       http://urlget.sourceforge.net/
+Url:       https://urlget.sourceforge.net/
 Source0:  %{name}-%{version}.tar.bz2 
 BuildRequires: curl-devel
 BuildRequires: libxml2-devel
