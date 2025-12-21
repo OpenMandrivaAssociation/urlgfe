@@ -12,6 +12,11 @@ Group:     Networking/File transfer
 License:     GPL
 Url:       https://urlget.sourceforge.net/
 Source0:  %{name}-%{version}.tar.bz2 
+BuildRequires:	autoconf
+BuildRequires:	automake
+BuildRequires:	libtool-base
+BuildRequires:	slibtool
+BuildRequires:	make
 BuildRequires: curl-devel
 BuildRequires: libxml2-devel
 BuildRequires: pkgconfig(gtk+-3.0)
